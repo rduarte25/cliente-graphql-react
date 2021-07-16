@@ -6,9 +6,18 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "apollo-boost": "^0.4.9",
+    "graphql": "^15.3.0",
+    "graphql-tag": "^2.11.0",
+    "localstorage": "^1.0.1",
+    "r": "0.0.5",
     "react": "^17.0.0",
+    "react-apollo": "^3.1.5",
     "react-dom": "^17.0.0",
-    "react-scripts": "3.4.4"
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.4",
+    "react-select": "^3.1.0",
+    "recharts": "^1.8.5"
   },
   "scripts": {
     "start": "react-scripts start",

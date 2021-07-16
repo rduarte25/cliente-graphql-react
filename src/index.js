@@ -1,12 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import { RootSession } from './App';
 import * as serviceWorker from './serviceWorker';
+import ApolloClient, { InMemoryCache } from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+
+const client = new ApolloClient({
+  uri : "http://192.168.3.108:8000/graphql",
+  fetchOptions: {
+    credentils: 'include'
+  },
+  request: operation => {
+    const token = localStorage.getItem('token');
+    operation.setContext({
+      headers: {
+        authorization: token
+      }
+    })
+  },
+  cache: new InMemoryCache({
+    addTypename: false
+  }),
+  onError: ({networkError, graphQLErrors}) => {
+    console.log('graphQLErrors', graphQLErrors);
+    console.log('networkError', networkError);
+  }
+});
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+	<ApolloProvider client={client}>
+	  <RootSession />
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
